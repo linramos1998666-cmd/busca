@@ -1,281 +1,551 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Calculadora Penal RP</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #fff;
-      margin: 0;
-    }
+export default function ShoppingTijucaBuscaLojas() {
+  const lojas = [
+    { id: 18, setor: "TIJUCA", codigo: "STJ01081A", razao_social: "VLP RIO VIAGENS E TURISMO LTDA", nome_fantasia: "AZUL LINHAS AEREAS", andar: "L1", categoria: "" },
+    { id: 19, setor: "TIJUCA", codigo: "STJ03023", razao_social: "MILANO COMERCIO VAREJISTA DE ALIMENTOS S.A.", nome_fantasia: "BACIO DI LATTE", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 20, setor: "TIJUCA", codigo: "STJ00114", razao_social: "MILANO COMERCIO VAREJISTA DE ALIMENTOS S.A.", nome_fantasia: "BACIO DI LATTE", andar: "L1", categoria: "" },
+    { id: 21, setor: "TIJUCA", codigo: "STJ01083", razao_social: "SHERAZADE MODAS E ARTEFATOS DE COUROS LTDA", nome_fantasia: "BAGAGGIO", andar: "L1", categoria: "" },
+    { id: 22, setor: "TIJUCA", codigo: "STJ00136", razao_social: "TECNOLOGIA BANCARIA S.A.", nome_fantasia: "BANCO 24 HORAS", andar: "L0", categoria: "" },
+    { id: 23, setor: "TIJUCA", codigo: "STJ00144", razao_social: "TECNOLOGIA BANCARIA S.A.", nome_fantasia: "BANCO 24 HORAS", andar: "L0", categoria: "" },
+    { id: 24, setor: "TIJUCA", codigo: "STJ00007", razao_social: "TECNOLOGIA BANCARIA S.A.", nome_fantasia: "BANCO 24 HORAS", andar: "L0", categoria: "" },
+    { id: 25, setor: "TIJUCA", codigo: "STJ00400", razao_social: "TECNOLOGIA BANCARIA S.A.", nome_fantasia: "BANCO 24 HORAS", andar: "L0", categoria: "" },
+    { id: 26, setor: "TIJUCA", codigo: "STJ00143", razao_social: "TECNOLOGIA BANCARIA S.A.", nome_fantasia: "BANCO 24 HORAS", andar: "L0", categoria: "" },
+    { id: 27, setor: "TIJUCA", codigo: "STJ00006", razao_social: "TECNOLOGIA BANCARIA S.A.", nome_fantasia: "BANCO 24 HORAS", andar: "L0", categoria: "" },
+    { id: 28, setor: "TIJUCA", codigo: "STJ00038", razao_social: "CAIXA ECONOMICA FEDERAL", nome_fantasia: "BANCO CAIXA ECONOMICA FEDERAL", andar: "L0", categoria: "" },
+    { id: 29, setor: "TIJUCA", codigo: "STJ00037", razao_social: "BANCO SANTANDER (BRASIL) S.A.", nome_fantasia: "BANCO SANTANDER", andar: "L0", categoria: "" },
+    { id: 30, setor: "TIJUCA", codigo: "STJ03065", razao_social: "NIAD RESTAURANTES LTDA", nome_fantasia: "BATATA INGLESA", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 31, setor: "TIJUCA", codigo: "STJ01042", razao_social: "BC PIEDADE DISTRIBUIDORA DE PRODUTOS DE BELEZA LTDA", nome_fantasia: "BEL COSMETICOS", andar: "L1", categoria: "" },
+    { id: 32, setor: "TIJUCA", codigo: "STJ00046", razao_social: "BELL ART NORTE SHOPPING DECORACOES LTDA", nome_fantasia: "BELL ART", andar: "L0", categoria: "" },
+    { id: 33, setor: "TIJUCA", codigo: "STJ02011", razao_social: "AP PEZINHO COMERCIO DE CALCADOS EIRELI - EPP", nome_fantasia: "BIBI CALCADOS", andar: "L2", categoria: "" },
+    { id: 34, setor: "TIJUCA", codigo: "STJ03044", razao_social: "BUGA 2013 LANCHONETE LTDA", nome_fantasia: "BIBI SUCOS", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 35, setor: "TIJUCA", codigo: "STJ00120", razao_social: "BISCOITE COMERCIO DE ALIMENTOS E PRESENTES LTDA", nome_fantasia: "BISCOITE", andar: "L1", categoria: "" },
+    { id: 36, setor: "TIJUCA", codigo: "STJ00102", razao_social: "DGS COMERCIO DE ALIMENTOS LTDA", nome_fantasia: "BOBS", andar: "L1", categoria: "" },
+    { id: 37, setor: "TIJUCA", codigo: "STJ03073", razao_social: "DGS COMERCIO DE ALIMENTOS LTDA", nome_fantasia: "BOBS", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 38, setor: "TIJUCA", codigo: "STJ00025", razao_social: "FORMULA TIJU FITNESS CENTER ACADEMIA DE GINASTICA LTDA", nome_fantasia: "BODY TECH", andar: "L0", categoria: "" },
+    { id: 39, setor: "TIJUCA", codigo: "STJ00100", razao_social: "E.P.D DE MORAES", nome_fantasia: "BOFT BRASIL", andar: "L1", categoria: "" },
+    { id: 40, setor: "TIJUCA", codigo: "STJ03041", razao_social: "EMPORIO INGLES TIJUCA LTDA", nome_fantasia: "BOTANICA BISTRO", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 41, setor: "TIJUCA", codigo: "STJ00127", razao_social: "AMERICAN TOWER DO BRASIL - CESSAO DE INFRAESTRUTURAS S.A.", nome_fantasia: "BR TOWERS", andar: "n.a", categoria: "" },
+    { id: 42, setor: "TIJUCA", codigo: "STJ02115", razao_social: "NIBS PARTICIPACOES S.A", nome_fantasia: "BRASIL CACAU", andar: "L2", categoria: "" },
+    { id: 43, setor: "TIJUCA", codigo: "STJ01028", razao_social: "MARACANA COMERCIO DE BRINQUEDOS LTDA", nome_fantasia: "BRINK CENTER", andar: "L1", categoria: "" },
+    { id: 44, setor: "TIJUCA", codigo: "STJ03004", razao_social: "BROWNIE TIJUCA COMERCIO DE ALIMENTOS LTDA", nome_fantasia: "BROWNERIA", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 45, setor: "TIJUCA", codigo: "STJ00307", razao_social: "YANG FU YUAN", nome_fantasia: "BUBBLE KILL", andar: "L3", categoria: "QUIOSQUE" },
+    { id: 46, setor: "TIJUCA", codigo: "STJ03046", razao_social: "BULLGUER ALIMENTACOES S.A. EM RECUPERACAO JUDICIAL", nome_fantasia: "BULLGUER", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 47, setor: "TIJUCA", codigo: "STJ03059", razao_social: "ZAMP S.A.", nome_fantasia: "BURGER KING", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 48, setor: "TIJUCA", codigo: "STJ02048", razao_social: "CACAU NOIR CHOCOLATES UNIPESSOAL LTDA", nome_fantasia: "CACAU NOIR", andar: "L2", categoria: "" },
+    { id: 49, setor: "TIJUCA", codigo: "STJ01047", razao_social: "ASSB COMERCIO VAREJISTA DE DOCES LTDA", nome_fantasia: "CACAU SHOW", andar: "L1", categoria: "" },
+    { id: 50, setor: "TIJUCA", codigo: "STJ00040", razao_social: "ASSB COMERCIO VAREJISTA DE DOCES LTDA", nome_fantasia: "CACAU SHOW MEGA STORE", andar: "L0", categoria: "" },
+    { id: 51, setor: "TIJUCA", codigo: "STJ00003", razao_social: "COFFEE IN RIO LTDA", nome_fantasia: "CAFE CULTURA", andar: "L0", categoria: "" },
+    { id: 52, setor: "TIJUCA", codigo: "STJ02110", razao_social: "M R M TIJUCA CAFETERIA LTDA ME", nome_fantasia: "CAFE DO PONTO", andar: "L2", categoria: "" },
+    { id: 53, setor: "TIJUCA", codigo: "STJ03002", razao_social: "ANA PAULA ALMEIDA DA SILVA FERREIRA", nome_fantasia: "CALIFORNIA COFFEE", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 54, setor: "TIJUCA", codigo: "STJ03070", razao_social: "DRUMATTOS INDUSTRIA E COMERCIO LTDA", nome_fantasia: "CAMARAO E CIA", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 55, setor: "TIJUCA", codigo: "STJ02023", razao_social: "MAXMIX COMERCIAL LTDA", nome_fantasia: "CAMICADO", andar: "L2", categoria: "" },
+    { id: 56, setor: "TIJUCA", codigo: "STJ01040", razao_social: "BROCKTON INDUSTRIA E COMERCIO DE VESTUARIO E FACCOES LTDA", nome_fantasia: "CANTAO", andar: "L1", categoria: "" },
+    { id: 57, setor: "TIJUCA", codigo: "STJ01008", razao_social: "EMPORIO SANTA ANA CAFE LTDA", nome_fantasia: "CASA BAUDUCCO", andar: "L1", categoria: "" },
+    { id: 58, setor: "TIJUCA", codigo: "STJ00101A", razao_social: "AJE CPL LANCHES LTDA EPP", nome_fantasia: "CASA DO PAO DE QUEIJO", andar: "L1", categoria: "" },
+    { id: 59, setor: "TIJUCA", codigo: "STJ02096", razao_social: "LUIZ PAULO BURLAMAQUE REIS OLIVEIRA DA VEIGA", nome_fantasia: "CASUAL STREET", andar: "L2", categoria: "" },
+    { id: 60, setor: "TIJUCA", codigo: "STJ00044", razao_social: "LUA DE MEL ENXOVAIS LTDA", nome_fantasia: "CATRAN", andar: "L0", categoria: "" },
+    { id: 61, setor: "TIJUCA", codigo: "STJ03005", razao_social: "C&A MODAS S.A", nome_fantasia: "CEA", andar: "L3", categoria: "VESTUARIO" },
+    { id: 62, setor: "TIJUCA", codigo: "STJ1047A", razao_social: "MOTIVACAO COMERCIO E ACESSORIOS LTDA", nome_fantasia: "CELLAIRIS", andar: "L1", categoria: "" },
+    { id: 63, setor: "TIJUCA", codigo: "STJ00211", razao_social: "BEBELA COMERCIO LTDA", nome_fantasia: "CELLAIRIS", andar: "L2", categoria: "" },
+    { id: 64, setor: "TIJUCA", codigo: "STJ00107", razao_social: "333 COMERCIO E COMUNICACOES LTDA", nome_fantasia: "CELULAR STATION", andar: "L1", categoria: "" },
+    { id: 65, setor: "TIJUCA", codigo: "STJ00009", razao_social: "SBF COMERCIO DE PRODUTOS ESPORTIVOS S.A.", nome_fantasia: "CENTAURO", andar: "L0", categoria: "" },
+    { id: 66, setor: "TIJUCA", codigo: "STJ02007", razao_social: "DESIGNFLORAL MORGADO LTDA", nome_fantasia: "CHARME", andar: "L2", categoria: "" },
+    { id: 67, setor: "TIJUCA", codigo: "STJ02023", razao_social: "GUIMEL COMERCIO DE OCULOS E ACESSORIOS LTDA", nome_fantasia: "CHILLI BEANS", andar: "L2", categoria: "" },
+    { id: 68, setor: "TIJUCA", codigo: "STJ00317", razao_social: "MESQUITA E OLIVEIRA COMESTIVEIS BEBIDAS REPRESENTACOES E EVENTOS LTDA", nome_fantasia: "CHOPP BRAHMA", andar: "L3", categoria: "QUIOSQUE" },
+    { id: 69, setor: "TIJUCA", codigo: "STJ02072", razao_social: "LEPRE ALENCAR COMERCIO EIRELI", nome_fantasia: "CIA MARITIMA", andar: "L2", categoria: "" },
+    { id: 70, setor: "TIJUCA", codigo: "STJ02040", razao_social: "DILLAB COMERCIO DE ARTIGOS FEMININOS LTDA", nome_fantasia: "CL JOIAS", andar: "L2", categoria: "" },
+    { id: 71, setor: "TIJUCA", codigo: "STJ02111", razao_social: "CLARO S.A.", nome_fantasia: "CLARO", andar: "L2", categoria: "" },
+    { id: 72, setor: "TIJUCA", codigo: "STJ1061A", razao_social: "CLARO S.A.", nome_fantasia: "CLARO", andar: "L1", categoria: "" },
+    { id: 73, setor: "TIJUCA", codigo: "STJ00023", razao_social: "MARGARIDA DOS ANJOS ARAUJO TEIXEIRA", nome_fantasia: "CLUB MEN SALON", andar: "L0", categoria: "" },
+    { id: 74, setor: "TIJUCA", codigo: "STJ01056", razao_social: "SAO JOSE TIJUCA COMERCIO DE VESTUARIO LTDA", nome_fantasia: "CLUBE MELISSA", andar: "L1", categoria: "" },
+    { id: 75, setor: "TIJUCA", codigo: "STJ03075", razao_social: "RESTAURANTE MISTURA SENSACIONAL LTDA", nome_fantasia: "COME KETO", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 76, setor: "TIJUCA", codigo: "STJ00208", razao_social: "TUBUBU ACESSORIOS LTDA", nome_fantasia: "COMPLEMENTO", andar: "L1", categoria: "" },
+    { id: 77, setor: "TIJUCA", codigo: "STJ01012", razao_social: "TEMIMA BELEZA LTDA", nome_fantasia: "CONDAL", andar: "L1", categoria: "" },
+    { id: 78, setor: "TIJUCA", codigo: "STJ01072", razao_social: "SAO JUDAS TADEU COMERCIO DE CALCADOS E BOLSAS LTDA", nome_fantasia: "CONSTANCE", andar: "L1", categoria: "" },
+    { id: 79, setor: "TIJUCA", codigo: "STJ00007", razao_social: "CHARLOTTE CHIC LTDA", nome_fantasia: "COR E UNHA FASHION HAIR", andar: "L0", categoria: "" },
+    { id: 80, setor: "TIJUCA", codigo: "STJ00042", razao_social: "CORPUS TIJUCA DEPILACAO LTDA-ME", nome_fantasia: "CORPUS DEPILACAO", andar: "G2", categoria: "" },
+    { id: 81, setor: "TIJUCA", codigo: "STJ00305", razao_social: "TIJUCA BATIDOS DE FRUTAS E SUCOS LTDA", nome_fantasia: "COSECHAS", andar: "L3", categoria: "QUIOSQUE" },
+    { id: 82, setor: "TIJUCA", codigo: "STJ00309A", razao_social: "COTACAO DISTRIBUIDORA DE TITULOS E VALORES MOBILIARIOS S.A.", nome_fantasia: "COTACAO CAMBIO", andar: "L0", categoria: "" },
+    { id: 83, setor: "TIJUCA", codigo: "STJ01062", razao_social: "CRIARI REPRESENTACAO, INDUSTRIA E COMERCIO DE ROUPAS LTDA", nome_fantasia: "CRIATIF", andar: "L1", categoria: "" },
+    { id: 84, setor: "TIJUCA", codigo: "STJ02065", razao_social: "LE SORTE COMERCIO DE SAPATOS LTDA", nome_fantasia: "CRIS ROBERTO", andar: "L2", categoria: "" },
+    { id: 85, setor: "TIJUCA", codigo: "STJ01003A", razao_social: "RODOLFO DANIEL FONSECA CUNHA", nome_fantasia: "CROCS", andar: "L1", categoria: "" },
+    { id: 86, setor: "TIJUCA", codigo: "STJ01079B", razao_social: "DIONIZIO VIANNA VIAGENS E TURISMO LTDA", nome_fantasia: "CVC", andar: "L1", categoria: "" },
+    { id: 87, setor: "TIJUCA", codigo: "STJ02070", razao_social: "CADAVAL ARTIGOS DE VESTUARIO E ACESSORIOS EIRELI", nome_fantasia: "CYNTHIA PAMPLONA", andar: "L2", categoria: "" },
+    { id: 88, setor: "TIJUCA", codigo: "STJ03006", razao_social: "DA GRACA DOCERIA LTDA", nome_fantasia: "DA GRACA CULINARIA", andar: "L3", categoria: "QUIOSQUE" },
+    { id: 89, setor: "TIJUCA", codigo: "STJ00202", razao_social: "SP. SUMARE PRODUTOS DE HIGIENE LTDA", nome_fantasia: "DAVENE", andar: "L2", categoria: "QUIOSQUE" },
+    { id: 90, setor: "TIJUCA", codigo: "STJ3014A", razao_social: "IGUASPORT LTDA", nome_fantasia: "DECATHLON", andar: "L2", categoria: "" },
+    { id: 91, setor: "TIJUCA", codigo: "STJ02008", razao_social: "DEGUSTO TIJUCA COMERCIO DE ALIMENTOS LTDA", nome_fantasia: "DEGUSTO", andar: "L2", categoria: "" },
+    { id: 92, setor: "TIJUCA", codigo: "STJ00004", razao_social: "DELIRIO TIJUCA S.A", nome_fantasia: "DELIRIO TROPICAL", andar: "L0", categoria: "" },
+    { id: 93, setor: "TIJUCA", codigo: "STJ01067", razao_social: "BSPK SALE SHOPPING TIJUCA LTDA", nome_fantasia: "DEMOCRATA", andar: "L1", categoria: "" },
+    { id: 94, setor: "TIJUCA", codigo: "STJ01058", razao_social: "DENGO CHOCOLATES S.A.", nome_fantasia: "DENGO", andar: "L1", categoria: "" },
+    { id: 95, setor: "TIJUCA", codigo: "STJ03072", razao_social: "FAZENDA DA TIJUCA RESTAURANTE LTDA", nome_fantasia: "DIVINO FOGAO", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 96, setor: "TIJUCA", codigo: "STJ02075", razao_social: "ALBERT MOURAD HADID", nome_fantasia: "DOCE VIDA", andar: "L2", categoria: "" },
+    { id: 97, setor: "TIJUCA", codigo: "STJ00204", razao_social: "DOM CASERO COMERCIO DE PRODUTOS ALIMENTICIOS LTDA", nome_fantasia: "DOM CASERO", andar: "L2", categoria: "QUIOSQUE" },
+    { id: 98, setor: "TIJUCA", codigo: "STJ05008", razao_social: "TIJUCA BARBEARIA CAFE E BAR LTDA", nome_fantasia: "DON BARBER BEER", andar: "G2", categoria: "BARBEARIA" },
+    { id: 99, setor: "TIJUCA", codigo: "STJ02004", razao_social: "DRESS TO CLOTHING - BOUTIQUE LTDA", nome_fantasia: "DRESS TO", andar: "L2", categoria: "VESTUARIO" },
+    { id: 100, setor: "TIJUCA", codigo: "STJ01038", razao_social: "RAIA DROGASIL S/A", nome_fantasia: "DROGA RAIA", andar: "L1", categoria: "" },
+    { id: 101, setor: "TIJUCA", codigo: "STJ01004", razao_social: "DROGARIAS PACHECO S/A", nome_fantasia: "DROGARIAS PACHECO", andar: "L1", categoria: "DROGARIA" },
+    { id: 102, setor: "TIJUCA", codigo: "STJ00701", razao_social: "TECH WASH SERVICOS AUTOMOTIVOS LTDA", nome_fantasia: "DRY WASH", andar: "G4", categoria: "LAVA RAPIDO" },
+    { id: 103, setor: "TIJUCA", codigo: "STJ01053", razao_social: "CORPOREOS - SERVICOS TERAPEUTICOS S.A.", nome_fantasia: "ESPACO LASER", andar: "L1", categoria: "" },
+    { id: 104, setor: "TIJUCA", codigo: "STJ01073", razao_social: "BOTICARIO PRODUTOS DE BELEZA LTDA", nome_fantasia: "EUDORA", andar: "L1", categoria: "" },
+    { id: 105, setor: "TIJUCA", codigo: "STJ03022", razao_social: "GREEN COMERCIO DE COLCHOES LTDA-ME", nome_fantasia: "EURO COLCHOES", andar: "L3", categoria: "COLCHOES" },
+    { id: 106, setor: "TIJUCA", codigo: "STJ01030A", razao_social: "INSTITUTO DE BELEZA ELEGANTE EIRELI EPP", nome_fantasia: "FACTORY", andar: "L1", categoria: "" },
+    { id: 107, setor: "TIJUCA", codigo: "STJ02051", razao_social: "GRUPO DE MODA SOMA SA", nome_fantasia: "FARM", andar: "L2", categoria: "" },
+    { id: 108, setor: "TIJUCA", codigo: "STJ01014", razao_social: "CSB DROGARIAS S.A", nome_fantasia: "FARMALIFE", andar: "L1", categoria: "" },
+    { id: 109, setor: "TIJUCA", codigo: "STJ01048C", razao_social: "FAS PADARIA ARTESANAL LTDA", nome_fantasia: "FAS", andar: "L1", categoria: "" },
+    { id: 110, setor: "TIJUCA", codigo: "STJ00503", razao_social: "CONFRARIA FRANCHISING LTDA", nome_fantasia: "FAST FRAME", andar: "G2", categoria: "" },
+    { id: 111, setor: "TIJUCA", codigo: "STJ02018", razao_social: "FAST SHOP S.A", nome_fantasia: "FAST SHOP", andar: "L2", categoria: "" },
+    { id: 112, setor: "TIJUCA", codigo: "STJ00119", razao_social: "DOCURAS TIJUCANAS COMERCIO DE BALAS, DOCES E SEMELHANTES LTDA", nome_fantasia: "FINI", andar: "L1", categoria: "" },
+    { id: 113, setor: "TIJUCA", codigo: "STJ1048A", razao_social: "L. A. ARAUJO ARMARINHO LTDA - ME", nome_fantasia: "FIRST CLASS", andar: "L1", categoria: "" },
+    { id: 114, setor: "TIJUCA", codigo: "STJ02087", razao_social: "HAIR MODA E COMERCIO LTDA", nome_fantasia: "FISZPAN", andar: "L2", categoria: "" },
+    { id: 115, setor: "TIJUCA", codigo: "STJ1044B", razao_social: "AROMALLITA COMERCIO PRESENTES E BRINDES TEMATICOS LTDA", nome_fantasia: "FITA", andar: "L1", categoria: "" },
+    { id: 116, setor: "TIJUCA", codigo: "STJ01019", razao_social: "R QUINTAES INDUSTRIA E COMERCIO LTDA", nome_fantasia: "FLOREST", andar: "L1", categoria: "" },
+    { id: 117, setor: "TIJUCA", codigo: "STJ00008", razao_social: "NUMMOS NEGOCIOS E GESTAO EMPRESARIAL LTDA", nome_fantasia: "FLUFI", andar: "L0", categoria: "" },
+    { id: 118, setor: "TIJUCA", codigo: "STJ00008", razao_social: "FLU VILA ROUPAS ARTIGOS ESPORTIVOS LTDA", nome_fantasia: "FLUMINENSE", andar: "L0", categoria: "" },
+    { id: 119, setor: "TIJUCA", codigo: "STJ02013", razao_social: "MPX CONFORTO E BEM ESTAR LTDA", nome_fantasia: "FOM", andar: "L2", categoria: "" },
+    { id: 120, setor: "TIJUCA", codigo: "STJ02080", razao_social: "GRUPO DE MODA SOMA SA", nome_fantasia: "FOXTOM", andar: "L2", categoria: "" },
+    { id: 121, setor: "TIJUCA", codigo: "STJ01018", razao_social: "RV COMERCIO DE ALIMENTOS E PRODUTOS NATURAIS LTDA", nome_fantasia: "GAIA MERCEARIA GOURMET", andar: "L1", categoria: "" },
+    { id: 122, setor: "TIJUCA", codigo: "STJ02060", razao_social: "GOOD VIBES COMERCIAL DE MODA LTDA", nome_fantasia: "GARAGE VINTAGE", andar: "L2", categoria: "" },
+    { id: 123, setor: "TIJUCA", codigo: "STJ03063", razao_social: "LP JAP TIJUCA LTDA", nome_fantasia: "GENDAI", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 124, setor: "TIJUCA", codigo: "STJ03009", razao_social: "CABANA DA ILHA ALIMENTOS LTDA", nome_fantasia: "GENEAL", andar: "L3", categoria: "QUIOSQUE" },
+    { id: 125, setor: "TIJUCA", codigo: "STJ00105", razao_social: "JESMOND COMERCIO VAREJISTA LTDA", nome_fantasia: "GRANADO PHARMACIAS", andar: "L1", categoria: "" },
+    { id: 126, setor: "TIJUCA", codigo: "STJ00048", razao_social: "BUSINESS RIO COMERCIO DE GENEROS ALIMENTICIOS LTDA", nome_fantasia: "GRAND CRU", andar: "L0", categoria: "" },
+    { id: 127, setor: "TIJUCA", codigo: "STJ00014", razao_social: "SGH BRASIL COMERCIO DE OCULOS LTDA", nome_fantasia: "GRANDVISION BY FOTOTICA", andar: "L0", categoria: "" },
+    { id: 128, setor: "TIJUCA", codigo: "STJ00401", razao_social: "FUNWORLD BRASIL MARKETING, EVENTOS E COMERCIO LTDA", nome_fantasia: "GRUA DE PELUCIAS", andar: "G2", categoria: "" },
+    { id: 129, setor: "TIJUCA", codigo: "STJ00004", razao_social: "FUNWORLD BRASIL MARKETING, EVENTOS E COMERCIO LTDA", nome_fantasia: "GRUA DE PELUCIAS", andar: "L0", categoria: "" },
+    { id: 130, setor: "TIJUCA", codigo: "STJ03026", razao_social: "GGT REFEICOES LTDA", nome_fantasia: "GULA GULA", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 131, setor: "TIJUCA", codigo: "STJ03037", razao_social: "BRAMEX COMERCIO E SERVICOS LTDA", nome_fantasia: "GURUME", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 132, setor: "TIJUCA", codigo: "STJ01069", razao_social: "VC25 COMERCIO VAREJISTA DE CALCADOS, VESTUARIO E ACESSORIOS LTDA", nome_fantasia: "HAVAIANAS", andar: "L1", categoria: "" },
+    { id: 133, setor: "TIJUCA", codigo: "STJ03048", razao_social: "GOLDENEYE COMERCIO E EMPREENDIMENTOS LTDA", nome_fantasia: "HAVANNA", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 134, setor: "TIJUCA", codigo: "STJ03001", razao_social: "BUSINESS RIO COMERCIO DE GENEROS ALIMENTICIOS LTDA", nome_fantasia: "HEAVEN CUCINA", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 135, setor: "TIJUCA", codigo: "STJ01093", razao_social: "CIA HERING", nome_fantasia: "HERING", andar: "L1", categoria: "" },
+    { id: 136, setor: "TIJUCA", codigo: "STJ02055", razao_social: "FARGOM COMERCIO VAREJISTA DE ARTIGOS DE VESTUARIO E ACESSORIOS LTDA - EPP", nome_fantasia: "HOPE", andar: "L2", categoria: "" },
+    { id: 137, setor: "TIJUCA", codigo: "STJ02076", razao_social: "PIPA ACESSORIOS DE COURO LTDA", nome_fantasia: "INOVATHI", andar: "L2", categoria: "" },
+    { id: 138, setor: "TIJUCA", codigo: "STJ02088", razao_social: "INTERNET EM FOCO COMERCIO E INFORMATICA LTDA", nome_fantasia: "INTERNET EM FOCO", andar: "L2", categoria: "" },
+    { id: 139, setor: "TIJUCA", codigo: "STJ02099", razao_social: "PF TIJUCA COMERCIO DE ROUPAS LTDA", nome_fantasia: "INTIMISSIMI", andar: "L2", categoria: "" },
+    { id: 140, setor: "TIJUCA", codigo: "STJ02010", razao_social: "GLOBAL DISTRIBUICAO DE BENS DE CONSUMO LTDA", nome_fantasia: "IPLACE", andar: "L2", categoria: "" },
+    { id: 141, setor: "TIJUCA", codigo: "STJ01077", razao_social: "TIJUCA COMERCIO DE MILKSHAKES LTDA", nome_fantasia: "JOHNNY JOY", andar: "L1", categoria: "" },
+    { id: 142, setor: "TIJUCA", codigo: "STJ02067", razao_social: "CINDERELLA TK COMERCIO DE CALCADOS LTDA", nome_fantasia: "JORGE BISCHOFF", andar: "L2", categoria: "" },
+    { id: 143, setor: "TIJUCA", codigo: "STJ02056", razao_social: "JOSEFINA ROSACOR ACESSORIOS FEMININOS LTDA-ME", nome_fantasia: "JOSEFINA ROSACOR", andar: "L2", categoria: "" },
+    { id: 144, setor: "TIJUCA", codigo: "STJ03079", razao_social: "CLFL COMERCIO DE ALIMENTOS LTDA", nome_fantasia: "KFC", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 145, setor: "TIJUCA", codigo: "STJ00398", razao_social: "KIDS PLACE RECREACAO LTDA ME", nome_fantasia: "KIDS PLACE", andar: "L0", categoria: "" },
+    { id: 146, setor: "TIJUCA", codigo: "STJ10001", razao_social: "SR RIO DE JANEIRO CINEMAS S.A.", nome_fantasia: "KINOPLEX", andar: "G7", categoria: "" },
+    { id: 147, setor: "TIJUCA", codigo: "STJ00218", razao_social: "NIBS PARTICIPACOES S.A.", nome_fantasia: "KOPENHAGEN", andar: "L2", categoria: "" },
+    { id: 148, setor: "TIJUCA", codigo: "STJ00031", razao_social: "NIBS PARTICIPACOES S.A.", nome_fantasia: "KOPENHAGEN", andar: "L0", categoria: "" },
+    { id: 149, setor: "TIJUCA", codigo: "STJ02024", razao_social: "JOB ARTIGOS DO VESTUARIO E ACESSORIOS ESPORTIVOS LTDA", nome_fantasia: "LACOSTE", andar: "L2", categoria: "" },
+    { id: 150, setor: "TIJUCA", codigo: "STJ1027A", razao_social: "VINICIUS DA SILVEIRA BOSSI", nome_fantasia: "LASER ROSA", andar: "L1", categoria: "" },
+    { id: 151, setor: "TIJUCA", codigo: "STJ00015", razao_social: "L'EQUIPE PARFUM COSMETICOS LTDA", nome_fantasia: "LE PARFUM", andar: "L0", categoria: "" },
+    { id: 152, setor: "TIJUCA", codigo: "STJ03042", razao_social: "TIJUCA 3081 DOCES LTDA-ME", nome_fantasia: "LECADO", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 153, setor: "TIJUCA", codigo: "STJ00021", razao_social: "BARVI CONFECCOES LTDA - EPP", nome_fantasia: "LEELOO", andar: "L0", categoria: "" },
+    { id: 154, setor: "TIJUCA", codigo: "STJ02022", razao_social: "LEITURA TIJUCA COMERCIO DE LIVROS LTDA", nome_fantasia: "LEITURA", andar: "L2", categoria: "" },
+    { id: 155, setor: "TIJUCA", codigo: "STJ02002", razao_social: "LST - COMERCIO DE MODA E ACESSORIOS EIRELI", nome_fantasia: "LEVIS", andar: "L2", categoria: "" },
+    { id: 156, setor: "TIJUCA", codigo: "STJ02105", razao_social: "LINDT & SPRUNGLI (BRAZIL) COMERCIO DE ALIMENTOS LTDA", nome_fantasia: "LINDT E SPRUNGLI", andar: "L2", categoria: "" },
+    { id: 157, setor: "TIJUCA", codigo: "STJ02041", razao_social: "LIVE STORE BRASIL COMERCIO DE ROUPAS LTDA", nome_fantasia: "LIVE", andar: "L2", categoria: "" },
+    { id: 158, setor: "TIJUCA", codigo: "STJ2096A", razao_social: "ATF COMERCIO E CONFECCAO LTDA", nome_fantasia: "LIZIE", andar: "L2", categoria: "" },
+    { id: 159, setor: "TIJUCA", codigo: "STJ02114", razao_social: "ESPACO DO BANHO E AROMAS LTDA", nome_fantasia: "LOCCITANE", andar: "L2", categoria: "" },
+    { id: 160, setor: "TIJUCA", codigo: "STJ02009", razao_social: "NALU COMERCIO DE COSMETICOS LTDA", nome_fantasia: "LOCCITANE AU BRASIL", andar: "L2", categoria: "" },
+    { id: 161, setor: "TIJUCA", codigo: "STJ02062", razao_social: "TROIS E-COMMERCE ROUPAS LTDA", nome_fantasia: "LOJA 3", andar: "L2", categoria: "" },
+    { id: 162, setor: "TIJUCA", codigo: "STJ03056", razao_social: "LOJAS AMERICANAS S.A.", nome_fantasia: "LOJAS AMERICANAS", andar: "L3", categoria: "DEPARTAMENTOS" },
+    { id: 163, setor: "TIJUCA", codigo: "STJ02107", razao_social: "LOUNGERIE S A", nome_fantasia: "LOUNGERIE", andar: "L2", categoria: "" },
+    { id: 164, setor: "TIJUCA", codigo: "STJ01066", razao_social: "LCB CONFECCOES EIRELI", nome_fantasia: "LUIGIDI SPECIALE", andar: "L1", categoria: "" },
+    { id: 165, setor: "TIJUCA", codigo: "STJ02109", razao_social: "L I 11 RELOJOARIA LTDA", nome_fantasia: "LULEAN", andar: "L2", categoria: "" },
+    { id: 166, setor: "TIJUCA", codigo: "STJ02091", razao_social: "CAIOVIT L2 MEIAS LTDA", nome_fantasia: "LUPO", andar: "L2", categoria: "" },
+    { id: 167, setor: "TIJUCA", codigo: "STJ02086", razao_social: "LAKRIZIA SHOPPING TIJUCA LTDA", nome_fantasia: "LUZ DA LUA", andar: "L2", categoria: "" },
+    { id: 168, setor: "TIJUCA", codigo: "STJ03017", razao_social: "MADERO INDUSTRIA E COMERCIO S.A", nome_fantasia: "MADERO", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 169, setor: "TIJUCA", codigo: "STJ00117", razao_social: "BENBELO PAPELARIA LTDA", nome_fantasia: "MAGNOLIA", andar: "L1", categoria: "" },
+    { id: 170, setor: "TIJUCA", codigo: "STJ01046", razao_social: "MAGS COLOR FOTO LTDA ME", nome_fantasia: "MAGS COLOR (KODAK)", andar: "L1", categoria: "" },
+    { id: 171, setor: "TIJUCA", codigo: "STJ02100", razao_social: "MICAS NO SCT PERFUMARIA E PRESENTES LTDA - EPP", nome_fantasia: "MAHOGANY", andar: "L2", categoria: "" },
+    { id: 172, setor: "TIJUCA", codigo: "STJ05017", razao_social: "FLUPE SERVICOS E PRODUTOS PARA OS PES LTDA", nome_fantasia: "MAIS PODOLOGIA", andar: "G2", categoria: "" },
+    { id: 173, setor: "TIJUCA", codigo: "STJ03050", razao_social: "MJP TIJUCA RESTAURANTE LTDA", nome_fantasia: "MAMMA JAMMA", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 174, setor: "TIJUCA", codigo: "STJ03081", razao_social: "MANECO TIJUCA COMERCIO DE ALIMENTOS LTDA", nome_fantasia: "MANECO GOURMET", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 175, setor: "TIJUCA", codigo: "STJ03064", razao_social: "RESTAURANTE TIJUCA COMERCIO DE ALIMENTOS LTDA", nome_fantasia: "MANIA DE CHURRASCO PRIME STEAK HOUSE", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 176, setor: "TIJUCA", codigo: "STJ00019", razao_social: "GRUPO DE MODA SOMA SA", nome_fantasia: "MARIA FILO", andar: "L0", categoria: "" },
+    { id: 177, setor: "TIJUCA", codigo: "STJ2003A", razao_social: "M2 JOIAS E ACESSORIOS LTDA EPP", nome_fantasia: "MARIAS E MARIAS", andar: "L2", categoria: "" },
+    { id: 178, setor: "TIJUCA", codigo: "STJ00009", razao_social: "MB SERVICE RJME COMERCIAL LTDA", nome_fantasia: "MBOX", andar: "L0", categoria: "" },
+    { id: 179, setor: "TIJUCA", codigo: "STJ00115", razao_social: "ARCOS DOURADOS COMERCIO DE ALIMENTOS LTDA", nome_fantasia: "MC DONALD'S", andar: "L1", categoria: "QUIOSQUE" },
+    { id: 180, setor: "TIJUCA", codigo: "STJ03066", razao_social: "ARCOS DOURADOS COMERCIO DE ALIMENTOS LTDA", nome_fantasia: "MC DONALDS", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 181, setor: "TIJUCA", codigo: "STJ01024", razao_social: "MEGA DA TIJUCA COMERCIO DE ALIMENTOS LTDA", nome_fantasia: "MEGA MATTE", andar: "L1", categoria: "ALIMENTAÇÃO" },
+    { id: 182, setor: "TIJUCA", codigo: "STJ00116", razao_social: "TODOS OS SANTOS COMERCIO DE VESTUARIO LTDA", nome_fantasia: "MELISSA", andar: "L1", categoria: "" },
+    { id: 183, setor: "TIJUCA", codigo: "STJ2003B", razao_social: "TODO AZUL DO MAR LTDA", nome_fantasia: "MIALEGRA", andar: "L2", categoria: "" },
+    { id: 184, setor: "TIJUCA", codigo: "STJ01080", razao_social: "KYLY INDUSTRIA TEXTIL LTDA", nome_fantasia: "MILON", andar: "L1", categoria: "" },
+    { id: 185, setor: "TIJUCA", codigo: "STJ00210", razao_social: "GH4 COMERCIO DE JOIAS LTDA", nome_fantasia: "MINA DA PRATA", andar: "L2", categoria: "" },
+    { id: 186, setor: "TIJUCA", codigo: "STJ02044", razao_social: "QUIM GUIMARAES COMERCIO DE VESTUARIO LTDA", nome_fantasia: "MISS B.", andar: "L2", categoria: "" },
+    { id: 187, setor: "TIJUCA", codigo: "STJ02092", razao_social: "PASSIONE PER GELATO COMERCIO DE SORVETES E LANCHES LTDA", nome_fantasia: "MOMO GELATO", andar: "L2", categoria: "" },
+    { id: 188, setor: "TIJUCA", codigo: "STJ00145", razao_social: "GURJAO E SANTOS CASAS DE CHA LTDA", nome_fantasia: "MONCLOA", andar: "L1", categoria: "TERMINO (SAÍDA)" },
+    { id: 189, setor: "TIJUCA", codigo: "STJ03060", razao_social: "CHG ALIMENTACAO E COMERCIO LTDA", nome_fantasia: "MONTANA GRILL", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 190, setor: "TIJUCA", codigo: "STJ02081", razao_social: "MC VIA PARQUE COMERCIO DE RELOGIOS LTDA", nome_fantasia: "MONTE CARLO", andar: "L2", categoria: "" },
+    { id: 191, setor: "TIJUCA", codigo: "STJ00216", razao_social: "FLOW COMMERCE LTDA", nome_fantasia: "MORMAII", andar: "L2", categoria: "" },
+    { id: 192, setor: "TIJUCA", codigo: "STJ01088", razao_social: "JIN AND JANE COMERCIO DE COUROS E VESTUARIO LTDA", nome_fantasia: "MR CAT", andar: "L1", categoria: "" },
+    { id: 193, setor: "TIJUCA", codigo: "STJ03071", razao_social: "RESTAURANTE MR CHAN LTDA", nome_fantasia: "MR CHAN", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 194, setor: "TIJUCA", codigo: "STJ01048", razao_social: "VICTOR BARBIERI MARTINS", nome_fantasia: "MR CHENEY", andar: "L1", categoria: "" },
+    { id: 195, setor: "TIJUCA", codigo: "STJ01051", razao_social: "MV TIJUCA PRODUTOS NATURAIS LTDA", nome_fantasia: "MUNDO VERDE", andar: "L1", categoria: "" },
+    { id: 196, setor: "TIJUCA", codigo: "STJ02116", razao_social: "MYPLACE INDUSTRIA E COMERCIO DO VESTUARIO LTDA", nome_fantasia: "MY PLACE", andar: "L2", categoria: "" },
+    { id: 197, setor: "TIJUCA", codigo: "STJ05012", razao_social: "NAIL BEAUTY TIJUCA LTDA", nome_fantasia: "NAILS & MORE", andar: "G2", categoria: "" },
+    { id: 198, setor: "TIJUCA", codigo: "STJ05011", razao_social: "NAIL BEAUTY TIJUCA LTDA", nome_fantasia: "NAILS AND MORE", andar: "G2", categoria: "" },
+    { id: 199, setor: "TIJUCA", codigo: "STJ02088", razao_social: "NATURA COMERCIAL LTDA", nome_fantasia: "NATURA", andar: "L2", categoria: "" },
+    { id: 200, setor: "TIJUCA", codigo: "STJ02035", razao_social: "NESTLE BRASIL LTDA", nome_fantasia: "NESPRESSO", andar: "L2", categoria: "" },
+    { id: 201, setor: "TIJUCA", codigo: "STJ02104", razao_social: "NEW OTICA LTDA", nome_fantasia: "NEW OTICA", andar: "L2", categoria: "" },
+    { id: 202, setor: "TIJUCA", codigo: "STJ02098", razao_social: "NEW OTICA LTDA", nome_fantasia: "NEW OTICA", andar: "L2", categoria: "" },
+    { id: 203, setor: "TIJUCA", codigo: "STJ02074", razao_social: "ALBERT MOURAD HADID", nome_fantasia: "NICOLE", andar: "L2", categoria: "" },
+    { id: 204, setor: "TIJUCA", codigo: "STJ01057", razao_social: "BOTICARIO PRODUTOS DE BELEZA LTDA", nome_fantasia: "O BOTICARIO", andar: "L1", categoria: "" },
+    { id: 205, setor: "TIJUCA", codigo: "STJ03012", razao_social: "OAK TIBOLLA COMERCIO DE ALIMENTOS EIRELI", nome_fantasia: "OAKBERRY", andar: "L3", categoria: "QUIOSQUE" },
+    { id: 206, setor: "TIJUCA", codigo: "STJ02089A", razao_social: "TI DESIGN OPTICA LTDA", nome_fantasia: "OCCHIALERIA", andar: "L2", categoria: "" },
+    { id: 207, setor: "TIJUCA", codigo: "STJ01048", razao_social: "SORRIR ODONTOMAR PRODUTOS DE HIGIENE BUCAL LTDA", nome_fantasia: "ODONTOMAR", andar: "L1", categoria: "" },
+    { id: 208, setor: "TIJUCA", codigo: "STJ03074", razao_social: "JOAO VITOR DE CASTRO DA COSTA", nome_fantasia: "OFFICE GOURMET", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 209, setor: "TIJUCA", codigo: "STJ01075", razao_social: "ACTUM INDUSTRIA E COMERCIO LTDA", nome_fantasia: "OH BOY", andar: "L1", categoria: "" },
+    { id: 210, setor: "TIJUCA", codigo: "STJ03025", razao_social: "BUSINESS RIO COMERCIO DE GENEROS ALIMENTICIOS LTDA", nome_fantasia: "OLIVO GRILL", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 211, setor: "TIJUCA", codigo: "STJ01021", razao_social: "LH CARVALHO COMERCIO DE CONFECCOES E CALCADOS LTDA", nome_fantasia: "OPHICINA", andar: "L1", categoria: "" },
+    { id: 212, setor: "TIJUCA", codigo: "STJ01082", razao_social: "FABRICADORA DE POLIURETANO RIO SUL LTDA", nome_fantasia: "ORTOBOM", andar: "L1", categoria: "" },
+    { id: 213, setor: "TIJUCA", codigo: "STJ02013", razao_social: "TERRAS DE AVENTURA INDUSTRIA DE ARTIGOS ESPORTIVOS S/A", nome_fantasia: "OSKLEN", andar: "L2", categoria: "" },
+    { id: 214, setor: "TIJUCA", codigo: "STJ03003", razao_social: "RA E RE OTICA LTDA - ME", nome_fantasia: "OTICA ZOOM", andar: "L1", categoria: "" },
+    { id: 215, setor: "TIJUCA", codigo: "STJ02085", razao_social: "ALEXANDRE SILVA DE ALMEIDA", nome_fantasia: "OTICAS CAROL", andar: "L2", categoria: "" },
+    { id: 216, setor: "TIJUCA", codigo: "STJ02032", razao_social: "OTICAS DO POVO LTDA", nome_fantasia: "OTICAS DO POVO", andar: "L2", categoria: "" },
+    { id: 217, setor: "TIJUCA", codigo: "STJ00028", razao_social: "OUTBACK STEAKHOUSE RESTAURANTES BRASIL S.A.", nome_fantasia: "OUTBACK", andar: "L0", categoria: "" },
+    { id: 218, setor: "TIJUCA", codigo: "STJ01074", razao_social: "VAURAUS COMERCIO DE CALCADOS LTDA", nome_fantasia: "OUTER", andar: "L1", categoria: "" },
+    { id: 219, setor: "TIJUCA", codigo: "STJ02083", razao_social: "PANDORA DO BRASIL COMERCIO LTDA", nome_fantasia: "PANDORA", andar: "L2", categoria: "" },
+    { id: 220, setor: "TIJUCA", codigo: "STJ01039", razao_social: "PANNA BUOUX COMERCIO DE PRESENTES LTDA", nome_fantasia: "PANNA", andar: "L1", categoria: "" },
+    { id: 221, setor: "TIJUCA", codigo: "STJ00109", razao_social: "TRIGODOMINI LANCHES LTDA", nome_fantasia: "PAO E CIA", andar: "L1", categoria: "QUIOSQUE" },
+    { id: 222, setor: "TIJUCA", codigo: "STJ02001", razao_social: "BOAVISTA COMERCIO DE PAPEIS E PRESENTES EIRELI", nome_fantasia: "PAPEL CRAFT", andar: "L2", categoria: "" },
+    { id: 223, setor: "TIJUCA", codigo: "STJ03084", razao_social: "PIZZARIA MONTASIO LTDA", nome_fantasia: "PARME", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 224, setor: "TIJUCA", codigo: "STJ01022", razao_social: "KARIDEL CONFECCAO LTDA", nome_fantasia: "PEAHI", andar: "L1", categoria: "" },
+    { id: 225, setor: "TIJUCA", codigo: "STJ02063", razao_social: "PETICOLE COMERCIO E INDUSTRIA LTDA", nome_fantasia: "PETICOLE", andar: "L2", categoria: "" },
+    { id: 226, setor: "TIJUCA", codigo: "STJ01079", razao_social: "GEISA CARVALHO DE CAMPOS MARTINS", nome_fantasia: "PICADILLY", andar: "L1", categoria: "" },
+    { id: 227, setor: "TIJUCA", codigo: "STJ00219", razao_social: "PILI'S SECRET ACESSORIOS E ARTIGOS DO VESTUARIO LTDA", nome_fantasia: "PILIS SECRET", andar: "L2", categoria: "" },
+    { id: 228, setor: "TIJUCA", codigo: "STJ01128", razao_social: "SHOPPING TIJUCA - POISON DONUTS COMERCIO DE DONUTS LTDA", nome_fantasia: "POISON DONUTS", andar: "L1", categoria: "QUIOSQUE" },
+    { id: 229, setor: "TIJUCA", codigo: "STJ00039C", razao_social: "CAMARA DA SORTE 200S LOTERIA LTDA", nome_fantasia: "PONTO DA SORTE", andar: "L0", categoria: "" },
+    { id: 230, setor: "TIJUCA", codigo: "STJ02029", razao_social: "GRUPO CASAS BAHIA S.A.", nome_fantasia: "PONTO FRIO", andar: "L2", categoria: "" },
+    { id: 231, setor: "TIJUCA", codigo: "STJ0051A", razao_social: "PORTUGO IPANEMA COMERCIO DE ALIMENTOS LTDA", nome_fantasia: "PORTUGO E LAURENTINA", andar: "L1", categoria: "ALIMENTAÇÃO" },
+    { id: 232, setor: "TIJUCA", codigo: "STJ01059", razao_social: "PRATA TIJUCA COMERCIO DE BIJUTERIAS E ACESSORIOS LTDA", nome_fantasia: "PRATA COR", andar: "L1", categoria: "" },
+    { id: 233, setor: "TIJUCA", codigo: "STJ01068", razao_social: "SHOPPING TIJUCA COMERCIO DE BIJUTERIAS E PRESENTES LTDA", nome_fantasia: "PRATA E PRATA", andar: "L1", categoria: "" },
+    { id: 234, setor: "TIJUCA", codigo: "STJ02084", razao_social: "JOANNA CONSTANTIN KORAVOS IOSSIRES VESTUARIO", nome_fantasia: "PROGRAM", andar: "L2", categoria: "" },
+    { id: 235, setor: "TIJUCA", codigo: "STJ01049", razao_social: "PRIME EDITORIAL LTDA", nome_fantasia: "PROMOLIVROS", andar: "L1", categoria: "" },
+    { id: 236, setor: "TIJUCA", codigo: "STJ01044C", razao_social: "STUDIO MODERNO COMERCIO DE ROUPAS LTDA", nome_fantasia: "PUBLIC HOUSE", andar: "L1", categoria: "" },
+    { id: 237, setor: "TIJUCA", codigo: "STJ02054", razao_social: "OLIVEIRA CAVALEIRE COMERCIO DE VESTUARIOS LTDA", nome_fantasia: "PUKET", andar: "L2", categoria: "" },
+    { id: 238, setor: "TIJUCA", codigo: "STJ02042", razao_social: "FTL COMERCIO DE OPTICA LTDA", nome_fantasia: "QUALI OTICA", andar: "L2", categoria: "" },
+    { id: 239, setor: "TIJUCA", codigo: "STJ01063", razao_social: "BOTICARIO PRODUTOS DE BELEZA LTDA", nome_fantasia: "QUEM DISSE BERENICE", andar: "L1", categoria: "" },
+    { id: 240, setor: "TIJUCA", codigo: "STJ02049", razao_social: "BROCKTON INDUSTRIA E COMERCIO DE VESTUARIO E ACESSORIOS LTDA", nome_fantasia: "REDLEY", andar: "L2", categoria: "" },
+    { id: 241, setor: "TIJUCA", codigo: "STJ01045", razao_social: "TERTULIA CAFE E LANCHES EIRELI", nome_fantasia: "REI DO MATE", andar: "L1", categoria: "ALIMENTAÇÃO" },
+    { id: 242, setor: "TIJUCA", codigo: "STJ00001", razao_social: "LOJAS RENNER S.A.", nome_fantasia: "RENNER", andar: "L0", categoria: "" },
+    { id: 243, setor: "TIJUCA", codigo: "STJ02077", razao_social: "TIFERET COMERCIO DE ROUPAS LTDA", nome_fantasia: "RESERVA", andar: "L2", categoria: "" },
+    { id: 244, setor: "TIJUCA", codigo: "STJ02057", razao_social: "INBRANDS S A", nome_fantasia: "RICHARDS", andar: "L2", categoria: "" },
+    { id: 245, setor: "TIJUCA", codigo: "STJ01092", razao_social: "LPRC COMERCIO DE BIJUTERIAS EIRELI", nome_fantasia: "ROMMANEL", andar: "L1", categoria: "" },
+    { id: 246, setor: "TIJUCA", codigo: "STJ01076", razao_social: "IB COMERCIO E INDUSTRIA LTDA", nome_fantasia: "SACADA", andar: "L1", categoria: "" },
+    { id: 247, setor: "TIJUCA", codigo: "STJ02073", razao_social: "MADAGASCAR CENTER COUROS LTDA", nome_fantasia: "SAMSONITE", andar: "L2", categoria: "" },
+    { id: 248, setor: "TIJUCA", codigo: "STJ00017", razao_social: "ALLIED TECNOLOGIA S.A", nome_fantasia: "SAMSUNG", andar: "L0", categoria: "" },
+    { id: 249, setor: "TIJUCA", codigo: "STJ2087A", razao_social: "CARMEL CALCADOS E ACESSORIOS LTDA", nome_fantasia: "SANTA LOLLA", andar: "L2", categoria: "" },
+    { id: 250, setor: "TIJUCA", codigo: "STJ1027B", razao_social: "JULIO CESAR PINTO", nome_fantasia: "SAPATOP", andar: "L1", categoria: "" },
+    { id: 251, setor: "TIJUCA", codigo: "STJ03021", razao_social: "GONCALO LUIS TAVARES FERREIRA DE CARVALHO", nome_fantasia: "SARDINHA TABERNA PORTUGUESA", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 252, setor: "TIJUCA", codigo: "STJ02118", razao_social: "ZZAB COMERCIO DE CALCADOS LTDA", nome_fantasia: "SCHUTZ", andar: "L2", categoria: "" },
+    { id: 253, setor: "TIJUCA", codigo: "STJ00501", razao_social: "SEM PARAR INSTITUICAO DE PAGAMENTO LTDA", nome_fantasia: "SEM PARAR", andar: "G2", categoria: "" },
+    { id: 254, setor: "TIJUCA", codigo: "STJ01026", razao_social: "SENSE SPA EXPRESS CENTRO DE ESTETICA CORPORAL LTDA", nome_fantasia: "SENSE SPA", andar: "L1", categoria: "" },
+    { id: 255, setor: "TIJUCA", codigo: "STJ1029B", razao_social: "SENSI AROMAS E DECORACAO LTDA - ME", nome_fantasia: "SENSI AROMAS", andar: "L1", categoria: "" },
+    { id: 256, setor: "TIJUCA", codigo: "STJ00012", razao_social: "FAST TIME INDUSTRIA E COMERCIO E SERVICOS LTDA", nome_fantasia: "SHITCOIN", andar: "n.a", categoria: "" },
+    { id: 257, setor: "TIJUCA", codigo: "STJ01064", razao_social: "SHOULDER S.A.", nome_fantasia: "SHOULDER", andar: "L1", categoria: "" },
+    { id: 258, setor: "TIJUCA", codigo: "STJ02060", razao_social: "SIMPLE ORGANIC BEAUTY S.A.", nome_fantasia: "SIMPLE ORGANIC", andar: "L2", categoria: "" },
+    { id: 259, setor: "TIJUCA", codigo: "STJ00008", razao_social: "HOME SOLUTION COMERCIO DE MOVEIS E EQUIPAMENTOS DE REFRIGERACAO LTDA ME", nome_fantasia: "SOFT", andar: "L3", categoria: "QUIOSQUE" },
+    { id: 260, setor: "TIJUCA", codigo: "STJ01070", razao_social: "SONHO DOS PES SHOPPING TIJUCA CALCADOS LTDA", nome_fantasia: "SONHO DOS PES", andar: "L1", categoria: "" },
+    { id: 261, setor: "TIJUCA", codigo: "STJ00002", razao_social: "MAGALHAES 777 SORVETES LTDA", nome_fantasia: "SORVETI ITALIA", andar: "L0", categoria: "" },
+    { id: 262, setor: "TIJUCA", codigo: "STJ00010", razao_social: "BOLDRO COMERCIO DE ARTIGOS EM COURO LTDA - ME", nome_fantasia: "SOULIER", andar: "L0", categoria: "" },
+    { id: 263, setor: "TIJUCA", codigo: "STC7502", razao_social: "APS CANTINA LTDA", nome_fantasia: "SOUSA CANTINA", andar: "G2", categoria: "" },
+    { id: 264, setor: "TIJUCA", codigo: "STJ02071", razao_social: "JORGE SOARES ALMEIDA", nome_fantasia: "SOUTH", andar: "L2", categoria: "" },
+    { id: 265, setor: "TIJUCA", codigo: "STJ00101", razao_social: "GRANDE TIK JOIAS E BRINDES LTDA", nome_fantasia: "SPLENDORI", andar: "L1", categoria: "" },
+    { id: 266, setor: "TIJUCA", codigo: "STJ03069", razao_social: "SPOTUCA ALIMENTOS LTDA", nome_fantasia: "SPOLETO", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 267, setor: "TIJUCA", codigo: "STJ01050", razao_social: "ICMC COMERCIO VAREJISTA DE MODA LTDA", nome_fantasia: "SPORT MIX", andar: "L1", categoria: "" },
+    { id: 268, setor: "TIJUCA", codigo: "STJ1044A", razao_social: "ST. MODAS INDUSTRIA E COMERCIO S/A", nome_fantasia: "STROKE", andar: "L1", categoria: "" },
+    { id: 269, setor: "TIJUCA", codigo: "STJ00033", razao_social: "STUDIO DO SONO ST COLCHOES E DECORACOES LTDA", nome_fantasia: "STUDIO DO SONO", andar: "L0", categoria: "" },
+    { id: 270, setor: "TIJUCA", codigo: "STJ03003", razao_social: "ALTOMAR COMERCIO DE ALIMENTOS E SERVICOS DE APOIO ADMINISTRATIVO LTDA", nome_fantasia: "SUBWAY", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 271, setor: "TIJUCA", codigo: "STJ02034", razao_social: "SWAROVSKI CRISTAIS LTDA", nome_fantasia: "SWAROVSKI", andar: "L2", categoria: "CRISTAIS FINOS" },
+    { id: 272, setor: "TIJUCA", codigo: "STJ01086", razao_social: "TAC FRANQUIA INDUSTRIA E COMERCIO LTDA", nome_fantasia: "TACO", andar: "L1", categoria: "VESTUARIO" },
+    { id: 273, setor: "TIJUCA", codigo: "STJ03078", razao_social: "TBG GESTAO DE RESTAURANTES S/A", nome_fantasia: "TACO BELL", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 274, setor: "TIJUCA", codigo: "STJ02064", razao_social: "MINKK TB COMERCIO DE BIQUINIS LTDA", nome_fantasia: "TANGA BRASIL", andar: "L2", categoria: "ROUPA DE BANHO" },
+    { id: 275, setor: "TIJUCA", codigo: "STJ02001", razao_social: "TERRAMAZONIA COSMETICOS LTDA", nome_fantasia: "TERRAMAZONIA", andar: "L2", categoria: "" },
+    { id: 276, setor: "TIJUCA", codigo: "STJ00118", razao_social: "JAILTON JUNIOR FERREIRA RIBEIRO", nome_fantasia: "THE COFFEE", andar: "L1", categoria: "QUIOSQUE" },
+    { id: 277, setor: "TIJUCA", codigo: "STJ02045", razao_social: "TIM S A", nome_fantasia: "TIM", andar: "L2", categoria: "TELEFONIA" },
+    { id: 278, setor: "TIJUCA", codigo: "STJ01036", razao_social: "TIM S A", nome_fantasia: "TIM", andar: "L1", categoria: "TELEFONIA" },
+    { id: 279, setor: "TIJUCA", codigo: "STJ00109", razao_social: "ESTOK DISTRIBUIDORA E SERVICOS S A", nome_fantasia: "TOK STOK COMPACT", andar: "L1", categoria: "CASA" },
+    { id: 280, setor: "TIJUCA", codigo: "STJ1029A", razao_social: "SAFIRA E ESMERALDA COMERCIO DE BRINQUEDOS LTDA", nome_fantasia: "TOY BOY", andar: "L1", categoria: "BRINQUEDO" },
+    { id: 281, setor: "TIJUCA", codigo: "STJ02039", razao_social: "JRDRG COMERCIO DE ROUPAS E ACESSORIOS LTDA", nome_fantasia: "TRACK&FIELD", andar: "L2", categoria: "" },
+    { id: 282, setor: "TIJUCA", codigo: "STJ02069", razao_social: "STABILO COMERCIO DE BOLSAS E ACESSORIOS LTDA", nome_fantasia: "UNCLE K", andar: "L2", categoria: "" },
+    { id: 283, setor: "TIJUCA", codigo: "STJ01025", razao_social: "PADRAO SPA E BELEZA LTDA", nome_fantasia: "UNHAS CARIOCAS", andar: "L1", categoria: "" },
+    { id: 284, setor: "TIJUCA", codigo: "STJ01052", razao_social: "MIX BOX ROUPAS E ACESSORIOS LTDA", nome_fantasia: "USAFLEX", andar: "L1", categoria: "" },
+    { id: 285, setor: "TIJUCA", codigo: "STJ01016", razao_social: "UVLINE COMERCIO E SERVICOS DE ARTIGOS DE PROTECAO SOLAR LTDA", nome_fantasia: "UV LINE", andar: "L1", categoria: "" },
+    { id: 286, setor: "TIJUCA", codigo: "STJ00110", razao_social: "GAM IMPORTADORA E DISTRIBUIDORA DE EQUIPAMENTOS DE TELEFONIA LTDA", nome_fantasia: "VERO", andar: "L1", categoria: "" },
+    { id: 287, setor: "TIJUCA", codigo: "STJ00047", razao_social: "VIA LASER SERVICOS ESTETICOS S.A.", nome_fantasia: "VIA LASER", andar: "L0", categoria: "" },
+    { id: 288, setor: "TIJUCA", codigo: "STJ00103", razao_social: "IT CHIC BIJUTERIAS LTDA", nome_fantasia: "VIC CHIC", andar: "L1", categoria: "" },
+    { id: 289, setor: "TIJUCA", codigo: "STJ01054", razao_social: "KASIO COMERCIO DE VESTUARIO LTDA", nome_fantasia: "VILA ROMANA", andar: "L1", categoria: "" },
+    { id: 290, setor: "TIJUCA", codigo: "STJ02030", razao_social: "TELLERINA COMERCIO DE PRESENTES E ARTIGOS PARA DECORACAO S.A.", nome_fantasia: "VIVARA", andar: "L2", categoria: "" },
+    { id: 291, setor: "TIJUCA", codigo: "STJ03061", razao_social: "CASA DO CAMARAO RESTAURANTE LTDA", nome_fantasia: "VIVENDA DO CAMARAO", andar: "L3", categoria: "ALIMENTAÇÃO" },
+    { id: 292, setor: "TIJUCA", codigo: "STJ02006", razao_social: "TELEFONICA BRASIL S.A.", nome_fantasia: "VIVO", andar: "L2", categoria: "" },
+    { id: 293, setor: "TIJUCA", codigo: "STJ00105", razao_social: "CONEX COM E SERV TELEFONIA LTDA", nome_fantasia: "VX CASE", andar: "L1", categoria: "" },
+    { id: 294, setor: "TIJUCA", codigo: "STJ02043", razao_social: "XS STORE COMERCIO E SERVICOS DE EQUIP. DE TELEF. E INFORM. EIRELI", nome_fantasia: "VX CASE", andar: "L2", categoria: "" },
+    { id: 295, setor: "TIJUCA", codigo: "STJ00042", razao_social: "BELUCA CENTRO DE BELEZA LTDA", nome_fantasia: "WERNER COIFFEUR", andar: "L0", categoria: "" },
+    { id: 296, setor: "TIJUCA", codigo: "STJ0003C", razao_social: "LAMIA SERVICOS DE BELEZA LTDA", nome_fantasia: "WINK", andar: "L1", categoria: "" },
+    { id: 297, setor: "TIJUCA", codigo: "STJ00109", razao_social: "TIJUCA COMERCIO DE PERFUMES LTDA", nome_fantasia: "WORLD FREE", andar: "L1", categoria: "" },
+    { id: 298, setor: "TIJUCA", codigo: "STJ02059", razao_social: "TIJUCA 2059 COMERCIO DE ARTIGOS ESPORTIVOS LTDA", nome_fantasia: "WORLD TENNIS", andar: "L2", categoria: "" },
+    { id: 299, setor: "TIJUCA", codigo: "STJ00111", razao_social: "AMORI COMERCIO DE ELETRONICOS LTDA", nome_fantasia: "XIAOMI STORE", andar: "L1", categoria: "" },
+    { id: 300, setor: "TIJUCA", codigo: "STJ02098", razao_social: "ZEREZES DESIGN, PRODUCAO E COMERCIO DE ARTESANATOS LTDA", nome_fantasia: "ZEREZES", andar: "L2", categoria: "" },
+    { id: 301, setor: "TIJUCA", codigo: "STJ01031", razao_social: "ZINZANE COMERCIO E CONFECCAO DE VESTUARIO LTDA", nome_fantasia: "ZINZANE", andar: "L1", categoria: "" },
+    { id: 302, setor: "TIJUCA", codigo: "STJ00050", razao_social: "LOJA VAGA", nome_fantasia: "LOJA VAGA", andar: "", categoria: "" },
+    { id: 303, setor: "TIJUCA", codigo: "STJ01081", razao_social: "LOJA VAGA", nome_fantasia: "LOJA VAGA", andar: "", categoria: "" },
+    { id: 304, setor: "TIJUCA", codigo: "STJ02058", razao_social: "LOJA VAGA", nome_fantasia: "LOJA VAGA", andar: "", categoria: "" },
+    { id: 305, setor: "TIJUCA", codigo: "STJ02066", razao_social: "LOJA VAGA", nome_fantasia: "LOJA VAGA", andar: "", categoria: "" },
+    { id: 306, setor: "TIJUCA", codigo: "STJ03083", razao_social: "LOJA VAGA", nome_fantasia: "LOJA VAGA", andar: "", categoria: "" },
+    { id: 307, setor: "TIJUCA", codigo: "STJ0001C", razao_social: "LOJA VAGA", nome_fantasia: "LOJA VAGA", andar: "", categoria: "" },
+    { id: 308, setor: "TIJUCA", codigo: "STJ00107", razao_social: "LOJA VAGA", nome_fantasia: "LOJA VAGA", andar: "", categoria: "" },
+    { id: 309, setor: "TIJUCA", codigo: "STJ00113", razao_social: "LOJA VAGA", nome_fantasia: "LOJA VAGA", andar: "", categoria: "" },
+    { id: 310, setor: "TIJUCA", codigo: "STJ00209", razao_social: "LOJA VAGA", nome_fantasia: "LOJA VAGA", andar: "", categoria: "" },
+    { id: 311, setor: "TIJUCA", codigo: "STJ00214", razao_social: "LOJA VAGA", nome_fantasia: "LOJA VAGA", andar: "", categoria: "" },
+    { id: 312, setor: "TIJUCA", codigo: "STJ00215", razao_social: "LOJA VAGA", nome_fantasia: "LOJA VAGA", andar: "", categoria: "" },
+    { id: 313, setor: "TIJUCA", codigo: "STJ1014A", razao_social: "LOJA VAGA", nome_fantasia: "LOJA VAGA", andar: "", categoria: "" },
+    { id: 314, setor: "TIJUCA", codigo: "STJ01043B", razao_social: "LOJA VAGA", nome_fantasia: "LOJA VAGA", andar: "", categoria: "" },
+    { id: 315, setor: "TIJUCA", codigo: "STJ3077A", razao_social: "LOJA VAGA", nome_fantasia: "LOJA VAGA", andar: "", categoria: "" },
+    { id: 316, setor: "TIJUCA", codigo: "STJG2ES1", razao_social: "LOJA VAGA", nome_fantasia: "LOJA VAGA", andar: "", categoria: "" },
+  ];
 
-    header {
-      background: #020617;
-      padding: 20px;
-      text-align: center;
-      border-bottom: 2px solid #22c55e;
-    }
+  const React = window.React;
+  const { useMemo, useState } = React;
 
-    .container {
-      padding: 20px;
-      max-width: 900px;
-      margin: auto;
-    }
+  const [busca, setBusca] = useState("");
+  const [andar, setAndar] = useState("TODOS");
+  const [categoria, setCategoria] = useState("TODAS");
+  const [mostrarVagas, setMostrarVagas] = useState(false);
+  const [ordem, setOrdem] = useState("az");
 
-    .crime {
-      display: flex;
-      justify-content: space-between;
-      background: #1e293b;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 8px;
-    }
+  const andares = useMemo(() => {
+    const ordemAndares = ["L0", "L1", "L2", "L3", "G2", "G4", "G7", "n.a", ""];
+    const unicos = Array.from(new Set(lojas.map((l) => l.andar)));
+    return unicos.sort((a, b) => ordemAndares.indexOf(a) - ordemAndares.indexOf(b));
+  }, []);
 
-    button {
-      background: #22c55e;
-      border: none;
-      padding: 10px 15px;
-      color: #000;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-    }
+  const categorias = useMemo(() => {
+    return Array.from(new Set(lojas.map((l) => l.categoria).filter(Boolean))).sort((a, b) => a.localeCompare(b));
+  }, []);
 
-    .resultado {
-      margin-top: 20px;
-      background: #020617;
-      padding: 15px;
-      border-radius: 10px;
-    }
+  const resultados = useMemo(() => {
+    const termo = busca.trim().toLowerCase();
 
-    textarea {
-      width: 100%;
-      margin-top: 10px;
-      padding: 10px;
-      height: 150px;
-      resize: none;
-      border-radius: 6px;
-      border: none;
-    }
-  </style>
-</head>
-<body>
+    const filtradas = lojas.filter((loja) => {
+      const isVaga = loja.nome_fantasia === "LOJA VAGA";
+      if (!mostrarVagas && isVaga) return false;
+      if (andar !== "TODOS" && loja.andar !== andar) return false;
+      if (categoria !== "TODAS" && loja.categoria !== categoria) return false;
 
-<header>
-  <img src="logo.png" alt="Logo" style="max-width:300px;" onerror="this.src='https://via.placeholder.com/300x100?text=LOGO';">
-  <p style="font-size:12px; color:#94a3b8;">(Se o logo não aparecer, coloque o arquivo 'logo.png' na mesma pasta do HTML)</p>
-</header>
+      if (!termo) return true;
 
-<div class="container">
-
-<h2>Selecione os crimes:</h2>
-
-<div style="margin-bottom:15px;">
-  <input id="nome" placeholder="Nome do preso" style="padding:8px; width:48%; margin-right:2%;">
-  <input id="rg" placeholder="RG" style="padding:8px; width:48%;">
-</div>
-
-<div id="crimes"></div>
-
-<button type="button" onclick="calcular()">Calcular Pena</button>
-<button type="button" onclick="copiarPrisao()" style="margin-left:10px;">Copiar Prisão</button>
-
-<div class="resultado" id="resultado">
-  <p>Tempo: 0 meses</p>
-  <p>Multa: R$ 0</p>
-</div>
-
-<textarea id="saida" placeholder="O texto da prisão vai aparecer aqui caso o copiar falhe..."></textarea>
-
-</div>
-
-<script>
-const categorias = [
-  {
-    titulo: "CRIMES CONTRA A ADMINISTRAÇÃO",
-    crimes: [
-      {nome: "Falsa comunicação de crime", tempo: 10, multa: 1500},
-      {nome: "Desobediência", tempo: 3, multa: 1000},
-      {nome: "Desacato", tempo: 3, multa: 1000},
-      {nome: "Resistência a prisão", tempo: 15, multa: 3000},
-      {nome: "Obstrução da justiça", tempo: 5, multa: 1000},
-      {nome: "Falso testemunho", tempo: 15, multa: 5000},
-      {nome: "Perjúrio", tempo: 5, multa: 1000},
-      {nome: "Quebra de sigilo administrativo", tempo: 30, multa: 25000},
-      {nome: "Quebra de contrato administrativo", tempo: 30, multa: 10000},
-      {nome: "Incitação ao crime", tempo: 5, multa: 2000},
-      {nome: "Suborno", tempo: 35, multa: 15000},
-      {nome: "Falsificação ideológica", tempo: 3, multa: 500}
-    ]
-  },
-  {
-    titulo: "CRIMES CONTRA A VIDA",
-    crimes: [
-      {nome: "Tentativa de homicídio", tempo: 5, multa: 2000},
-      {nome: "Homicídio culposo", tempo: 3, multa: 1000},
-      {nome: "Homicídio qualificado", tempo: 10, multa: 2000},
-      {nome: "Homicídio doloso", tempo: 10, multa: 2500},
-      {nome: "Sequestro", tempo: 10, multa: 2000},
-      {nome: "Lesão corporal", tempo: 3, multa: 500},
-      {nome: "Maria da penha", tempo: 10, multa: 1000}
-    ]
-  },
-  {
-    titulo: "CRIMES CONTRA O PATRIMÔNIO",
-    crimes: [
-      {nome: "Roubo a viatura", tempo: 10, multa: 10000},
-      {nome: "Invasão de propriedade", tempo: 5, multa: 1000},
-      {nome: "Roubo a propriedade", tempo: 5, multa: 1000},
-      {nome: "Dano a patrimônio público e privado", tempo: 5, multa: 500},
-      {nome: "Extorsão", tempo: 100, multa: 0},
-      {nome: "Furto", tempo: 5, multa: 500},
-      {nome: "Roubo a ATM", tempo: 10, multa: 2000},
-      {nome: "Roubo a caixa registradora", tempo: 5, multa: 1000},
-      {nome: "Roubo de pertences", tempo: 3, multa: 500},
-      {nome: "Roubo de carro", tempo: 5, multa: 2000},
-      {nome: "Roubo a Ammunation", tempo: 10, multa: 2000},
-      {nome: "Roubo a Barbearia", tempo: 10, multa: 2000},
-      {nome: "Roubo a Loja", tempo: 10, multa: 2000},
-      {nome: "Roubo Banco Central", tempo: 30, multa: 5000},
-      {nome: "Roubo Banco Paleto", tempo: 30, multa: 5000},
-      {nome: "Roubo Fleeca", tempo: 30, multa: 5000},
-      {nome: "Roubo a Joalheria", tempo: 10, multa: 2000}
-    ]
-  },
-  {
-    titulo: "CRIMES DIVERSOS",
-    crimes: [
-      {nome: "Ocultação facial", tempo: 5, multa: 500},
-      {nome: "Vandalismo", tempo: 5, multa: 1000},
-      {nome: "Tentativa de fuga", tempo: 10, multa: 2000},
-      {nome: "Calúnia e difamação", tempo: 5, multa: 1500},
-      {nome: "Assédio moral", tempo: 5, multa: 1000},
-      {nome: "Omissão de socorro", tempo: 5, multa: 1000},
-      {nome: "Ameaça por autoridade", tempo: 40, multa: 30000},
-      {nome: "Estelionato", tempo: 35, multa: 10000},
-      {nome: "Formação de quadrilha", tempo: 5, multa: 1000},
-      {nome: "Contrabando", tempo: 5, multa: 1000},
-      {nome: "Posse de material ilícito", tempo: 15, multa: 8000},
-      {nome: "Tráfico de drogas", tempo: 8, multa: 1500},
-      {nome: "Posse de dinheiro sujo", tempo: 3, multa: 500},
-      {nome: "Tráfico de armas leves", tempo: 10, multa: 2000},
-      {nome: "Tráfico de armas médias", tempo: 15, multa: 4000},
-      {nome: "Tráfico de armas pesadas", tempo: 20, multa: 10000},
-      {nome: "Ameaça", tempo: 3, multa: 500},
-      {nome: "Porte de armas leves", tempo: 5, multa: 200},
-      {nome: "Porte de armas médias", tempo: 8, multa: 4000},
-      {nome: "Porte de armas pesadas", tempo: 15, multa: 10000},
-      {nome: "Munição leve", tempo: 3, multa: 1000},
-      {nome: "Munição média", tempo: 5, multa: 2000},
-      {nome: "Munição pesada", tempo: 8, multa: 4000},
-      {nome: "Tráfico munição leve", tempo: 5, multa: 2000},
-      {nome: "Tráfico munição média", tempo: 8, multa: 4000},
-      {nome: "Tráfico munição pesada", tempo: 12, multa: 5000},
-      {nome: "Corrida ilegal", tempo: 10, multa: 2000},
-      {nome: "Invasão departamento policial", tempo: 20, multa: 5000},
-      {nome: "Abandono de veículo", tempo: 1, multa: 1000},
-      {nome: "Roubo mergulhador", tempo: 10, multa: 3000},
-      {nome: "Aeronave sem rádio", tempo: 1, multa: 15000},
-      {nome: "Aeronave danificada", tempo: 1, multa: 15000}
-    ]
-  }
-];
-
-const container = document.getElementById("crimes");
-
-categorias.forEach((cat, catIndex) => {
-  const titulo = document.createElement("h3");
-  titulo.textContent = cat.titulo;
-  titulo.style.color = "#22c55e";
-  container.appendChild(titulo);
-
-  cat.crimes.forEach((c, crimeIndex) => {
-    const numero = (catIndex + 1) + '.' + (crimeIndex + 1);
-
-    const div = document.createElement("div");
-    div.className = "crime";
-
-    div.innerHTML = '<span>' + numero + ' - ' + c.nome + '</span>' +
-                    '<input type="checkbox" data-tempo="' + c.tempo + '" data-multa="' + c.multa + '">';
-
-    container.appendChild(div);
-  });
-});
-
-let crimesSelecionados = [];
-
-function calcular() {
-  let tempo = 0;
-  let multa = 0;
-  crimesSelecionados = [];
-
-  document.querySelectorAll('input[type="checkbox"]:checked').forEach(el => {
-    tempo += parseInt(el.dataset.tempo);
-    multa += parseInt(el.dataset.multa);
-
-    const nomeCrime = el.parentElement.querySelector('span').innerText;
-    crimesSelecionados.push(nomeCrime);
-  });
-
-  document.getElementById('resultado').innerHTML =
-    '<p>Tempo: ' + tempo + ' meses</p>' +
-    '<p>Multa: R$ ' + multa.toLocaleString() + '</p>';
-}
-
-function copiarPrisao() {
-  calcular();
-
-  const nome = document.getElementById('nome').value.trim() || 'N/A';
-  const rg = document.getElementById('rg').value.trim() || 'N/A';
-
-  let tempo = 0;
-  let multa = 0;
-
-  document.querySelectorAll('input[type="checkbox"]:checked').forEach(el => {
-    tempo += parseInt(el.dataset.tempo);
-    multa += parseInt(el.dataset.multa);
-  });
-
-  const listaCrimes = crimesSelecionados.map(c => '- ' + c).join('\n');
-
-  const texto =
-    '```md\n\n' +
-    '# INFORMAÇÕES DO PRESO:\n' +
-    '* NOME: ' + nome + '\n' +
-    '* RG: ' + rg + '\n\n' +
-    '# PENA TOTAL: ' + tempo + ' meses\n' +
-    '# MULTA: R$' + multa.toLocaleString() + '\n\n' +
-    '# CRIMES:\n' +
-    'CRIMES (ARTIGOS SELECIONADOS):\n' +
-    listaCrimes + '\n\n```';
-
-  if (navigator.clipboard && window.isSecureContext) {
-    navigator.clipboard.writeText(texto).then(() => {
-      alert('Prisão copiada!');
-    }).catch(() => {
-      fallbackCopy(texto);
+      return [
+        loja.nome_fantasia,
+        loja.razao_social,
+        loja.codigo,
+        loja.andar,
+        loja.categoria,
+        String(loja.id),
+      ]
+        .filter(Boolean)
+        .some((campo) => campo.toLowerCase().includes(termo));
     });
-  } else {
-    fallbackCopy(texto);
-  }
+
+    return filtradas.sort((a, b) => {
+      if (ordem === "az") return a.nome_fantasia.localeCompare(b.nome_fantasia);
+      if (ordem === "andar") return `${a.andar}-${a.nome_fantasia}`.localeCompare(`${b.andar}-${b.nome_fantasia}`);
+      return a.id - b.id;
+    });
+  }, [busca, andar, categoria, mostrarVagas, ordem]);
+
+  const totalLojas = lojas.filter((l) => l.nome_fantasia !== "LOJA VAGA").length;
+  const totalVagas = lojas.filter((l) => l.nome_fantasia === "LOJA VAGA").length;
+
+  const badgeAndar = (andar) => {
+    const estilos = {
+      L0: "bg-slate-700 text-white",
+      L1: "bg-emerald-600 text-white",
+      L2: "bg-blue-600 text-white",
+      L3: "bg-amber-500 text-black",
+      G2: "bg-fuchsia-600 text-white",
+      G4: "bg-cyan-600 text-white",
+      G7: "bg-rose-600 text-white",
+      "n.a": "bg-zinc-500 text-white",
+      "": "bg-zinc-800 text-zinc-300",
+    };
+    return estilos[andar] || "bg-zinc-700 text-white";
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-white p-4 md:p-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="rounded-3xl border border-emerald-500/40 bg-slate-900 shadow-2xl shadow-emerald-500/10 overflow-hidden">
+          <div className="border-b border-emerald-500/20 bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 p-6 md:p-8">
+            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold tracking-widest text-emerald-300">
+                  BUSCA DE LOJAS
+                </div>
+                <h1 className="mt-3 text-3xl md:text-5xl font-black tracking-tight">
+                  Shopping Tijuca
+                </h1>
+                <p className="mt-2 text-slate-300 max-w-2xl">
+                  Pesquise por nome, código, categoria ou andar. Base montada com as lojas que você enviou nas fotos.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
+                <div className="rounded-2xl bg-slate-950/70 border border-slate-800 p-4">
+                  <div className="text-slate-400">Lojas</div>
+                  <div className="text-2xl font-bold">{totalLojas}</div>
+                </div>
+                <div className="rounded-2xl bg-slate-950/70 border border-slate-800 p-4">
+                  <div className="text-slate-400">Vagas</div>
+                  <div className="text-2xl font-bold">{totalVagas}</div>
+                </div>
+                <div className="rounded-2xl bg-slate-950/70 border border-slate-800 p-4 col-span-2 md:col-span-1">
+                  <div className="text-slate-400">Resultados</div>
+                  <div className="text-2xl font-bold">{resultados.length}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-6 md:p-8 space-y-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4">
+              <div className="xl:col-span-2">
+                <label className="mb-2 block text-sm text-slate-300">Buscar loja</label>
+                <input
+                  value={busca}
+                  onChange={(e) => setBusca(e.target.value)}
+                  placeholder="Ex.: Renner, alimentação, L2, STJ02077..."
+                  className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 outline-none transition focus:border-emerald-500"
+                />
+              </div>
+
+              <div>
+                <label className="mb-2 block text-sm text-slate-300">Andar</label>
+                <select
+                  value={andar}
+                  onChange={(e) => setAndar(e.target.value)}
+                  className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 outline-none focus:border-emerald-500"
+                >
+                  <option value="TODOS">Todos</option>
+                  {andares.map((a) => (
+                    <option key={a || 'vazio'} value={a}>{a || 'Sem andar'}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="mb-2 block text-sm text-slate-300">Categoria</label>
+                <select
+                  value={categoria}
+                  onChange={(e) => setCategoria(e.target.value)}
+                  className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 outline-none focus:border-emerald-500"
+                >
+                  <option value="TODAS">Todas</option>
+                  {categorias.map((c) => (
+                    <option key={c} value={c}>{c}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="mb-2 block text-sm text-slate-300">Ordenar</label>
+                <select
+                  value={ordem}
+                  onChange={(e) => setOrdem(e.target.value)}
+                  className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 outline-none focus:border-emerald-500"
+                >
+                  <option value="az">Nome A-Z</option>
+                  <option value="andar">Andar</option>
+                  <option value="original">Ordem da lista</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              <button
+                onClick={() => {
+                  setBusca("");
+                  setAndar("TODOS");
+                  setCategoria("TODAS");
+                  setOrdem("az");
+                  setMostrarVagas(false);
+                }}
+                className="rounded-2xl bg-emerald-500 px-5 py-3 font-semibold text-slate-950 transition hover:scale-[1.02]"
+              >
+                Limpar filtros
+              </button>
+
+              <button
+                onClick={() => setMostrarVagas(!mostrarVagas)}
+                className={`rounded-2xl border px-5 py-3 font-semibold transition ${mostrarVagas ? "border-emerald-500 bg-emerald-500/10 text-emerald-300" : "border-slate-700 bg-slate-900 text-slate-200"}`}
+              >
+                {mostrarVagas ? "Ocultar lojas vagas" : "Mostrar lojas vagas"}
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+              <div className="lg:col-span-1 rounded-3xl border border-slate-800 bg-slate-950/60 p-5">
+                <h2 className="text-lg font-bold">Resumo por andar</h2>
+                <div className="mt-4 space-y-3">
+                  {andares.filter(Boolean).map((a) => {
+                    const qtd = lojas.filter((l) => l.andar === a && (mostrarVagas || l.nome_fantasia !== "LOJA VAGA")).length;
+                    return (
+                      <div key={a} className="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/60 px-4 py-3">
+                        <span className={`rounded-full px-3 py-1 text-xs font-bold ${badgeAndar(a)}`}>{a}</span>
+                        <span className="font-semibold">{qtd}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="lg:col-span-3 rounded-3xl border border-slate-800 bg-slate-950/60 overflow-hidden">
+                <div className="border-b border-slate-800 px-5 py-4 flex items-center justify-between">
+                  <h2 className="text-lg font-bold">Lista de lojas</h2>
+                  <span className="text-sm text-slate-400">{resultados.length} encontrados</span>
+                </div>
+
+                <div className="max-h-[70vh] overflow-auto">
+                  {resultados.length === 0 ? (
+                    <div className="p-8 text-center text-slate-400">Nenhuma loja encontrada.</div>
+                  ) : (
+                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 p-4">
+                      {resultados.map((loja) => {
+                        const vaga = loja.nome_fantasia === "LOJA VAGA";
+                        return (
+                          <div key={`${loja.id}-${loja.codigo}`} className={`rounded-3xl border p-5 transition hover:translate-y-[-2px] ${vaga ? "border-amber-500/30 bg-amber-500/5" : "border-slate-800 bg-slate-900/80"}`}>
+                            <div className="flex items-start justify-between gap-4">
+                              <div>
+                                <div className="text-xs uppercase tracking-widest text-slate-400">#{loja.id} • {loja.codigo}</div>
+                                <h3 className="mt-2 text-xl font-black leading-tight">{loja.nome_fantasia}</h3>
+                                <p className="mt-2 text-sm text-slate-300">{loja.razao_social}</p>
+                              </div>
+                              <span className={`shrink-0 rounded-full px-3 py-1 text-xs font-bold ${badgeAndar(loja.andar)}`}>
+                                {loja.andar || "--"}
+                              </span>
+                            </div>
+
+                            <div className="mt-4 flex flex-wrap gap-2">
+                              {loja.categoria ? (
+                                <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-300">
+                                  {loja.categoria}
+                                </span>
+                              ) : (
+                                <span className="rounded-full border border-slate-700 bg-slate-950 px-3 py-1 text-xs font-semibold text-slate-300">
+                                  Sem categoria
+                                </span>
+                              )}
+                              <span className="rounded-full border border-slate-700 bg-slate-950 px-3 py-1 text-xs font-semibold text-slate-300">
+                                {loja.setor}
+                              </span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
-
-function fallbackCopy(texto) {
-  const textarea = document.getElementById('saida');
-  textarea.value = texto;
-  textarea.select();
-  textarea.setSelectionRange(0, 99999);
-
-  try {
-    document.execCommand('copy');
-    alert('Prisão copiada! (modo compatível)');
-  } catch (err) {
-    alert('Copiar falhou! Copie manualmente abaixo.');
-  }
-}
-</script>
-
-</body>
-</html>

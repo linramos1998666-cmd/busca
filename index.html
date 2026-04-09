@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora Penal RP</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #fff;
+      margin: 0;
+    }
+
+    header {
+      background: #020617;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 2px solid #22c55e;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .crime {
+      display: flex;
+      justify-content: space-between;
+      background: #1e293b;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+    }
+
+    button {
+      background: #22c55e;
+      border: none;
+      padding: 10px 15px;
+      color: #000;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .resultado {
+      margin-top: 20px;
+      background: #020617;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    textarea {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      height: 150px;
+      resize: none;
+      border-radius: 6px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="logo.png" alt="Logo" style="max-width:300px;" onerror="this.src='https://via.placeholder.com/300x100?text=LOGO';">
+  <p style="font-size:12px; color:#94a3b8;">(Se o logo não aparecer, coloque o arquivo 'logo.png' na mesma pasta do HTML)</p>
+</header>
+
+<div class="container">
+
+<h2>Selecione os crimes:</h2>
+
+<div style="margin-bottom:15px;">
+  <input id="nome" placeholder="Nome do preso" style="padding:8px; width:48%; margin-right:2%;">
+  <input id="rg" placeholder="RG" style="padding:8px; width:48%;">
+</div>
+
+<div id="crimes"></div>
+
+<button type="button" onclick="calcular()">Calcular Pena</button>
+<button type="button" onclick="copiarPrisao()" style="margin-left:10px;">Copiar Prisão</button>
+
+<div class="resultado" id="resultado">
+  <p>Tempo: 0 meses</p>
+  <p>Multa: R$ 0</p>
+</div>
+
+<textarea id="saida" placeholder="O texto da prisão vai aparecer aqui caso o copiar falhe..."></textarea>
+
+</div>
+
+<script>
+const categorias = [
+  {
+    titulo: "CRIMES CONTRA A ADMINISTRAÇÃO",
+    crimes: [
+      {nome: "Falsa comunicação de crime", tempo: 10, multa: 1500},
+      {nome: "Desobediência", tempo: 3, multa: 1000},
+      {nome: "Desacato", tempo: 3, multa: 1000},
+      {nome: "Resistência a prisão", tempo: 15, multa: 3000},
+      {nome: "Obstrução da justiça", tempo: 5, multa: 1000},
+      {nome: "Falso testemunho", tempo: 15, multa: 5000},
+      {nome: "Perjúrio", tempo: 5, multa: 1000},
+      {nome: "Quebra de sigilo administrativo", tempo: 30, multa: 25000},
+      {nome: "Quebra de contrato administrativo", tempo: 30, multa: 10000},
+      {nome: "Incitação ao crime", tempo: 5, multa: 2000},
+      {nome: "Suborno", tempo: 35, multa: 15000},
+      {nome: "Falsificação ideológica", tempo: 3, multa: 500}
+    ]
+  },
+  {
+    titulo: "CRIMES CONTRA A VIDA",
+    crimes: [
+      {nome: "Tentativa de homicídio", tempo: 5, multa: 2000},
+      {nome: "Homicídio culposo", tempo: 3, multa: 1000},
+      {nome: "Homicídio qualificado", tempo: 10, multa: 2000},
+      {nome: "Homicídio doloso", tempo: 10, multa: 2500},
+      {nome: "Sequestro", tempo: 10, multa: 2000},
+      {nome: "Lesão corporal", tempo: 3, multa: 500},
+      {nome: "Maria da penha", tempo: 10, multa: 1000}
+    ]
+  },
+  {
+    titulo: "CRIMES CONTRA O PATRIMÔNIO",
+    crimes: [
+      {nome: "Roubo a viatura", tempo: 10, multa: 10000},
+      {nome: "Invasão de propriedade", tempo: 5, multa: 1000},
+      {nome: "Roubo a propriedade", tempo: 5, multa: 1000},
+      {nome: "Dano a patrimônio público e privado", tempo: 5, multa: 500},
+      {nome: "Extorsão", tempo: 100, multa: 0},
+      {nome: "Furto", tempo: 5, multa: 500},
+      {nome: "Roubo a ATM", tempo: 10, multa: 2000},
+      {nome: "Roubo a caixa registradora", tempo: 5, multa: 1000},
+      {nome: "Roubo de pertences", tempo: 3, multa: 500},
+      {nome: "Roubo de carro", tempo: 5, multa: 2000},
+      {nome: "Roubo a Ammunation", tempo: 10, multa: 2000},
+      {nome: "Roubo a Barbearia", tempo: 10, multa: 2000},
+      {nome: "Roubo a Loja", tempo: 10, multa: 2000},
+      {nome: "Roubo Banco Central", tempo: 30, multa: 5000},
+      {nome: "Roubo Banco Paleto", tempo: 30, multa: 5000},
+      {nome: "Roubo Fleeca", tempo: 30, multa: 5000},
+      {nome: "Roubo a Joalheria", tempo: 10, multa: 2000}
+    ]
+  },
+  {
+    titulo: "CRIMES DIVERSOS",
+    crimes: [
+      {nome: "Ocultação facial", tempo: 5, multa: 500},
+      {nome: "Vandalismo", tempo: 5, multa: 1000},
+      {nome: "Tentativa de fuga", tempo: 10, multa: 2000},
+      {nome: "Calúnia e difamação", tempo: 5, multa: 1500},
+      {nome: "Assédio moral", tempo: 5, multa: 1000},
+      {nome: "Omissão de socorro", tempo: 5, multa: 1000},
+      {nome: "Ameaça por autoridade", tempo: 40, multa: 30000},
+      {nome: "Estelionato", tempo: 35, multa: 10000},
+      {nome: "Formação de quadrilha", tempo: 5, multa: 1000},
+      {nome: "Contrabando", tempo: 5, multa: 1000},
+      {nome: "Posse de material ilícito", tempo: 15, multa: 8000},
+      {nome: "Tráfico de drogas", tempo: 8, multa: 1500},
+      {nome: "Posse de dinheiro sujo", tempo: 3, multa: 500},
+      {nome: "Tráfico de armas leves", tempo: 10, multa: 2000},
+      {nome: "Tráfico de armas médias", tempo: 15, multa: 4000},
+      {nome: "Tráfico de armas pesadas", tempo: 20, multa: 10000},
+      {nome: "Ameaça", tempo: 3, multa: 500},
+      {nome: "Porte de armas leves", tempo: 5, multa: 200},
+      {nome: "Porte de armas médias", tempo: 8, multa: 4000},
+      {nome: "Porte de armas pesadas", tempo: 15, multa: 10000},
+      {nome: "Munição leve", tempo: 3, multa: 1000},
+      {nome: "Munição média", tempo: 5, multa: 2000},
+      {nome: "Munição pesada", tempo: 8, multa: 4000},
+      {nome: "Tráfico munição leve", tempo: 5, multa: 2000},
+      {nome: "Tráfico munição média", tempo: 8, multa: 4000},
+      {nome: "Tráfico munição pesada", tempo: 12, multa: 5000},
+      {nome: "Corrida ilegal", tempo: 10, multa: 2000},
+      {nome: "Invasão departamento policial", tempo: 20, multa: 5000},
+      {nome: "Abandono de veículo", tempo: 1, multa: 1000},
+      {nome: "Roubo mergulhador", tempo: 10, multa: 3000},
+      {nome: "Aeronave sem rádio", tempo: 1, multa: 15000},
+      {nome: "Aeronave danificada", tempo: 1, multa: 15000}
+    ]
+  }
+];
+
+const container = document.getElementById("crimes");
+
+categorias.forEach((cat, catIndex) => {
+  const titulo = document.createElement("h3");
+  titulo.textContent = cat.titulo;
+  titulo.style.color = "#22c55e";
+  container.appendChild(titulo);
+
+  cat.crimes.forEach((c, crimeIndex) => {
+    const numero = (catIndex + 1) + '.' + (crimeIndex + 1);
+
+    const div = document.createElement("div");
+    div.className = "crime";
+
+    div.innerHTML = '<span>' + numero + ' - ' + c.nome + '</span>' +
+                    '<input type="checkbox" data-tempo="' + c.tempo + '" data-multa="' + c.multa + '">';
+
+    container.appendChild(div);
+  });
+});
+
+let crimesSelecionados = [];
+
+function calcular() {
+  let tempo = 0;
+  let multa = 0;
+  crimesSelecionados = [];
+
+  document.querySelectorAll('input[type="checkbox"]:checked').forEach(el => {
+    tempo += parseInt(el.dataset.tempo);
+    multa += parseInt(el.dataset.multa);
+
+    const nomeCrime = el.parentElement.querySelector('span').innerText;
+    crimesSelecionados.push(nomeCrime);
+  });
+
+  document.getElementById('resultado').innerHTML =
+    '<p>Tempo: ' + tempo + ' meses</p>' +
+    '<p>Multa: R$ ' + multa.toLocaleString() + '</p>';
+}
+
+function copiarPrisao() {
+  calcular();
+
+  const nome = document.getElementById('nome').value.trim() || 'N/A';
+  const rg = document.getElementById('rg').value.trim() || 'N/A';
+
+  let tempo = 0;
+  let multa = 0;
+
+  document.querySelectorAll('input[type="checkbox"]:checked').forEach(el => {
+    tempo += parseInt(el.dataset.tempo);
+    multa += parseInt(el.dataset.multa);
+  });
+
+  const listaCrimes = crimesSelecionados.map(c => '- ' + c).join('\n');
+
+  const texto =
+    '```md\n\n' +
+    '# INFORMAÇÕES DO PRESO:\n' +
+    '* NOME: ' + nome + '\n' +
+    '* RG: ' + rg + '\n\n' +
+    '# PENA TOTAL: ' + tempo + ' meses\n' +
+    '# MULTA: R$' + multa.toLocaleString() + '\n\n' +
+    '# CRIMES:\n' +
+    'CRIMES (ARTIGOS SELECIONADOS):\n' +
+    listaCrimes + '\n\n```';
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(texto).then(() => {
+      alert('Prisão copiada!');
+    }).catch(() => {
+      fallbackCopy(texto);
+    });
+  } else {
+    fallbackCopy(texto);
+  }
+}
+
+function fallbackCopy(texto) {
+  const textarea = document.getElementById('saida');
+  textarea.value = texto;
+  textarea.select();
+  textarea.setSelectionRange(0, 99999);
+
+  try {
+    document.execCommand('copy');
+    alert('Prisão copiada! (modo compatível)');
+  } catch (err) {
+    alert('Copiar falhou! Copie manualmente abaixo.');
+  }
+}
+</script>
+
+</body>
+</html>
